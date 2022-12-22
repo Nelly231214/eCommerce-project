@@ -77,12 +77,12 @@ const FilterColor = styled.div`
   cursor: pointer;
 `;
 
-const FilterSize = styled.select`
+const FilterBrand = styled.select`
   margin-left: 10px;
   padding: 5px;
 `;
 
-const FilterSizeOption = styled.option``;
+const FilterBrandOption = styled.option``;
 
 const AddContainer = styled.div`
   width: 50%;
@@ -126,9 +126,11 @@ const Product = () => {
   const [product,setProduct]=useState({});
   const [quantity,setQuantity]=useState(1);
   const [color,setColor]=useState("");
-  const [size,setSize]=useState("");
+  const [brand,setBrand]=useState("");
   const dispatch=useDispatch();
-
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[])
   useEffect(() => {
     const getProduct = async () => {
       try {
@@ -148,13 +150,14 @@ const Product = () => {
   }
  const handleClick=()=> {
   dispatch(
-  addProduct({...product, quantity,color,size}))
+  addProduct({...product, quantity,color,brand}))
  }
  
   return (
     <Container>
-      <Navbar />
       <Announcement />
+      <Navbar />
+      
       <Wrapper>
         <ImgContainer>
           <Image src={product.img} />
@@ -174,15 +177,16 @@ const Product = () => {
              
             </Filter>
             <Filter>
-              <FilterTitle>Size</FilterTitle>
-              <FilterSize onChange={(e)=>setSize(e.target.value)}>
-              {product.size?.map((s)=>(
-              <FilterSizeOption key={s}>{s}</FilterSizeOption>
+              <FilterTitle>Brand</FilterTitle>
+              <FilterBrand onChange={(e)=>setBrand(e.target.value)}>
+              {product.brand?.map((s)=>(
+              <FilterBrandOption key={s}>{s}</FilterBrandOption>
               ))}
-              </FilterSize>
+              </FilterBrand>
             </Filter>
           </FilterContainer>
           <AddContainer>
+            
             <AmountContainer>
               <Dash onClick={()=>handleQuantity("dec")}/>
               <Amount>{quantity}</Amount>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { login } from "../redux/apiCalls";
 import {mobile} from "../responsive";
@@ -12,7 +13,7 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+    url("https://us.123rf.com/450wm/sswartz/sswartz0802/sswartz080200007/2577058-a-brown-teddy-bear-isolated-on-white.jpg?ver=6")
       center;
   background-size: cover;
   display: flex;
@@ -29,7 +30,8 @@ const Wrapper = styled.div`
 
 const Title = styled.h1`
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 600;
+  color:#9BA17B;
 `;
 
 const Form = styled.form`
@@ -48,7 +50,7 @@ const Button = styled.button`
   width: 40%;
   border: none;
   padding: 15px 20px;
-  background-color: teal;
+  background-color: #9BA17B;
   color: white;
   cursor: pointer;
   margin-bottom: 10px;
@@ -58,7 +60,7 @@ const Button = styled.button`
   }
 `;
 
-const Link = styled.a`
+const New = styled.a`
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: underline;
@@ -75,11 +77,14 @@ const Login = () => {
   const [password,setPassword]=useState("")
   const dispatch=useDispatch()
   const {isFetching,error}=useSelector((state)=>state.user)
+  
 
   const handleClick=(e)=>{
     e.preventDefault()
     login(dispatch,{username,password})
+    
   }
+  
   return (
     <Container>
       <Wrapper>
@@ -89,8 +94,9 @@ const Login = () => {
           <Input type="password" placeholder="password" onChange={(e)=>setPassword(e.target.value)}/>
         <Button onClick={handleClick} disabled={isFetching}>LOGIN</Button>
       {error && <Error>Something is wrong... </Error>}
-          <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
+      <Link to="/register" >
+          <New style={{color:"black"}}>CREATE A NEW ACCOUNT</New>
+          </Link>
         </Form>
       </Wrapper>
     </Container>

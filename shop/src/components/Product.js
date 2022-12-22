@@ -2,6 +2,7 @@
   import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {Cart2, Search, HeartFill} from "react-bootstrap-icons";
+import {useState } from "react";
 
 const Info = styled.div`
 opacity: 0;
@@ -57,14 +58,15 @@ align-items: center;
 justify-content: center;
 margin: 10px;
 transition: all 0.5s ease;
-&:hover {
-  background-color: #e9f5f5;
-  transform: scale(1.1);
-}
+  &:hover {
+    background-color: #e9f5f5;
+    transform: scale(1.1);
+  }
 `;
 
 
   const Product = ({ item }) => {
+    const [iconColor,setIconColor] = useState("black");
     return (
       <Container>
         
@@ -77,10 +79,12 @@ transition: all 0.5s ease;
         </Link>
         </Icon>
         <Icon>
+          <Link to="/cart">
           <Cart2 />
+          </Link>
         </Icon>
         <Icon>
-          <HeartFill />
+          <HeartFill style={{color:iconColor}} onClick={()=>setIconColor("red")} />
         </Icon>
         </Info>
       </Container>

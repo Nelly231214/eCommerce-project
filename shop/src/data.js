@@ -1,45 +1,22 @@
-export const sliderItems = [
-    {
-      id: 1,
-      img: "https://i.ibb.co/XsdmR2c/1.png",
-      title: "SUMMER SALE",
-      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-      bg: "f5fafd",
-    }
-    // {
-    //   id: 2,
-    //   img: "https://i.ibb.co/DG69bQ4/2.png",
-    //   title: "AUTUMN COLLECTION",
-    //   desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-    //   bg: "fcf1ed",
-    // },
-    // {
-    //   id: 3,
-    //   img: "https://i.ibb.co/cXFnLLV/3.png",
-    //   title: "LOUNGEWEAR LOVE",
-    //   desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-    //   bg: "fbf0f4",
-    // },
-  ];
 
   export const categories = [
     {
       id: 1,
-      img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      title: "SHIRT STYLE!",
-      cat:"women"
+      img: "https://devasw7xy5fu5.cloudfront.net/toys-shop/wp-content/uploads/sites/261/2019/07/Category_Banner.png",
+      title: "TOYS STYLE!",
+      cat:"soft"
     },
     {
       id: 2,
-      img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      title: "LOUNGEWEAR LOVE",
-      cat:"coat"
+      img: "https://img.freepik.com/premium-photo/toys-collection-isolated-background_488220-27281.jpg?w=2000",
+      title: "TOYS LOVE",
+      cat:"lego"
     },
     {
       id: 3,
-      img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      title: "LIGHT JACKETS",
-      cat:"jeans"
+      img: "https://www.verywellfamily.com/thmb/BrN9tOpK7qUIZDLgsn_JMK91C7k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/best-toys-for-12-month-olds-4767524-v1-d27a4dcece764b5e8905646ecb85235e.jpg",
+      title: "TOYS FUN",
+      cat:"baby"
     },
   ];
 

@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import { Cart } from 'react-bootstrap-icons';
-// import {CBadge} from "@coreui/bootstrap-react"
-// import { useSelector } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Cart} from 'react-bootstrap-icons';
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../redux/apiCalls";
+import { resetCart } from "../redux/cartRedux";
+import { useDispatch, useSelector } from 'react-redux';
 
 const Container = styled.div`
   height: 60px;
@@ -25,33 +26,9 @@ const Left = styled.div`
   align-items: center;
 `;
 
-const Language = styled.span`
-  font-size: 14px;
-  cursor: pointer;
-  ${mobile({ display: "none" })}
- 
-`;
-
-const SearchContainer = styled.div`
-  border: 0.5px solid lightgray;
-  display: flex;
-  align-items: center;
-  margin-left: 25px;
-  padding: 5px;
-`;
-
-const Input = styled.input`
-  border: none;
-  ${mobile({ width: "50px" })}
-`;
-
-const Center = styled.div`
-  flex: 1;
-  text-align: center;
-`;
-
 const Logo = styled.h1`
   font-weight: bold;
+  color: black;
   ${mobile({ fontSize: "24px" })}
 `;
 const Right = styled.div`
@@ -66,35 +43,54 @@ const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  color:black;
+  text-decoration:none;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
 const Navbar = () => {
-  // const quantity = useSelector(state=>state.quantity)
+  const dispatch = useDispatch();
+  // const quantity = useSelector(state => state.cart.quantity)
+  const isEmpty = function (obj) { 
+    return Object.keys(obj).length === 0;
+  }
+
+  const user = useSelector((state) => state.user.currentUser)
+
+  const navigate = useNavigate()
+  console.log(user, "user")
+  const handleClick = (e) => {
+    e.preventDefault();
+    logout(dispatch);
+    navigate("/login")
+    dispatch(resetCart());
+
+  };
   
   return (
     
     <Container>
         <Wrapper>
        <Left>
-        <Language>
-            EN
-        </Language>
-        <SearchContainer >
-            <Input placeholder='Search'/>
-            </SearchContainer> 
-        </Left>
-       <Center>
         <Logo>
-            Nelly
+       
+          LUNA TOYS
         </Logo>
-       </Center>
+        </Left>
        <Right>
-        <MenuItem>REGISTER</MenuItem>
-        <MenuItem>SIGN IN</MenuItem>
+       {
+            isEmpty(user) &&
+            <>
+       <Link to="/register" style={{textDecoration:"none", color:'black'}}>
+        <MenuItem>REGISTER</MenuItem> </Link>
+        <Link to="/login" style={{textDecoration:"none", color:"black"}}>
+          <MenuItem>SIGN IN</MenuItem></Link>
+          </>
+          }
+          {!isEmpty(user) && <MenuItem onClick={handleClick}>LOGOUT</MenuItem>}
         <Link to="/cart">
         <MenuItem>
-        {/* <CBadge badgecontent={quantity} color="primary"> */}
+  
               <Cart />
           
             </MenuItem>
