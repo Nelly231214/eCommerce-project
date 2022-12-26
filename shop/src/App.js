@@ -13,7 +13,8 @@ import { useSelector } from "react-redux";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
-
+  
+  
   const isEmpty = function (obj) {
     return Object.keys(obj).length === 0;
   }
@@ -22,7 +23,8 @@ function App() {
     <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/products/:category" element={<ProductList />} />
-    <Route path="/product/:id" element={<Product />} />
+    <Route path="/product/:id" element={<Product />}  /> 
+    
     <Route path="/cart" element={<Cart />} />
     <Route path="/success" element={<Success />} />
     <Route path="/login" element={!isEmpty(user) ? <Navigate replace to="/" /> : <Login />} />

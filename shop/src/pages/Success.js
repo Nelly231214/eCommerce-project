@@ -1,51 +1,69 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useLocation } from "react-router";
-import { userRequest } from "../requestMethods";
+import React from 'react'
+import { HeartFill } from 'react-bootstrap-icons';
+import styled from "styled-components";
+import { Link} from 'react-router-dom';
 
-const Success = () => {
-  const location = useLocation();
-  
-  const data = location.state.stripeData;
-  const cart = location.state.cart;
-  const currentUser = useSelector((state) => state.user.currentUser);
-  const [orderId, setOrderId] = useState(null);
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://media.istockphoto.com/id/1196393819/photo/wooden-toy-railway-and-pyramid-in-the-children-room.jpg?s=612x612&w=0&k=20&c=oiGmHIC3-VFRqXf7iB6ko9Tzlk1eOgG-9AzlZK6luJ0=")
+      center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
-  useEffect(() => {
-    const createOrder = async () => {
-      try {
-        const res = await userRequest.post("/order", {
-          userId: currentUser._id,
-          products: cart.products.map((item) => ({
-            productId: item._id,
-            quantity: item._quantity,
-          })),
-          amount: cart.total,
-          address: data.billing_details.address,
-        });
-        setOrderId(res.data._id);
-      } catch {}
-    };
-    data && createOrder();
-  }, [cart, data, currentUser]);
+const Wrapper = styled.div`
+  width: 40%;
+  padding: 20px;
+  background-color: white;
+ 
+`;
 
+const Title = styled.h1`
+  font-size: 55x;
+  font-weight: 600;
+  color:#EB455F
+`;
+
+const Desc = styled.p`
+  margin: 20px 0px;
+  color:#2B3467;
+  font-weight: 1000;
+`;
+
+
+const Button = styled.button`
+  width: 40%;
+  border: none;
+  padding: 15px 20px;
+  background-color: #F8C4B4;
+  color: #2B3467;
+  cursor: pointer;
+  margin: 20px 0px;
+`;
+
+function Success() {
   return (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      {orderId
-        ? `Order has been created successfully. Your order number is ${orderId}`
-        : `Successfull. Your order is being prepared...`}
-      <button style={{ padding: 10, marginTop: 20 }}>Go to Homepage</button>
-    </div>
-  );
-};
+    <Container>
+    <Wrapper>
+      <Title>Thank You For Your Purchase!</Title>
+      <Desc>We hope you love it
+      <HeartFill></HeartFill>
+      </Desc>
+      <Link to="/">
+      <Button>Go Home</Button>
+      </Link>
+      
+    
+    </Wrapper>
+  </Container>
+  )
+}
 
-export default Success;
-
+export default Success

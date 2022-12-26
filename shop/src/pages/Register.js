@@ -44,10 +44,7 @@ const Input = styled.input`
   padding: 10px;
 `;
 
-const Agreement = styled.span`
-  font-size: 12px;
-  margin: 20px 0px;
-`;
+
 
 const Button = styled.button`
   width: 40%;
@@ -56,11 +53,12 @@ const Button = styled.button`
   background-color: #F8C4B4;
   color: white;
   cursor: pointer;
+  margin: 20px 0px;
 `;
 
 const Register = () => {
-  const [name,setName]=useState("")
-  const [lastName,setLastName]=useState("")
+  // const [name,setName]=useState("")
+  // const [lastName,setLastName]=useState("")
   const [username,setUsername]=useState("")
   const [email,setEmail]=useState("")
   const [confirm,setConfirm]=useState("")
@@ -71,7 +69,7 @@ const Register = () => {
 
   const handleCreate=(e)=>{
     e.preventDefault()
-    register(dispatch,{name,lastName,email,username,confirm,password})
+    register(dispatch,{email,username,confirm,password})
     navigate("/")
   }
   return (
@@ -79,16 +77,13 @@ const Register = () => {
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form>
-          <Input placeholder="name" onChange={(e)=>setName(e.target.value)} />
-          <Input placeholder="last name" onChange={(e)=>setLastName(e.target.value)}/>
+          {/* <Input placeholder="name" onChange={(e)=>setName(e.target.value)} />
+          <Input placeholder="last name" onChange={(e)=>setLastName(e.target.value)}/> */}
           <Input placeholder="username"onChange={(e)=>setUsername(e.target.value)} />
           <Input placeholder="email" onChange={(e)=>setEmail(e.target.value)}/>
           <Input placeholder="password" onChange={(e)=>setPassword(e.target.value)}/>
           <Input placeholder="confirm password" onChange={(e)=>setConfirm(e.target.value)}/>
-          <Agreement>
-            By creating an account, I consent to the processing of my personal
-            data in accordance with the <b>PRIVACY POLICY</b>
-          </Agreement>
+          
           <Button onClick={handleCreate} disabled={isFetching}>CREATE</Button>
         </Form>
       </Wrapper>

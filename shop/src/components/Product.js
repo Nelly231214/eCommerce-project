@@ -66,10 +66,15 @@ transition: all 0.5s ease;
 
 
   const Product = ({ item }) => {
+    const TOKEN =
+  JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
+    .accessToken
+console.log(TOKEN,55)
     const [iconColor,setIconColor] = useState("black");
     return (
+      <> 
+      {TOKEN ? 
       <Container>
-        
         <Circle />
         <Image src={item.img} />
         <Info>
@@ -86,8 +91,11 @@ transition: all 0.5s ease;
         <Icon>
           <HeartFill style={{color:iconColor}} onClick={()=>setIconColor("red")} />
         </Icon>
-        </Info>
+        </Info>  
+        
       </Container>
+      : undefined}
+      </> 
     );
   };
   
