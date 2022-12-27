@@ -64,7 +64,7 @@ const Register = () => {
   const [confirm,setConfirm]=useState("")
   const [password,setPassword]=useState("")
   const dispatch=useDispatch()
-  const {isFetching}=useSelector((state)=>state.users)
+  const {isFetching}=useSelector((state)=>state.user)
   const navigate=useNavigate()
 
   const handleCreate=(e)=>{

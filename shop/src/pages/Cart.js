@@ -165,7 +165,7 @@ const Cart = () => {
   },[])
 
   const onToken = (token) => {
-    console.log("onToken")
+    
     setStripeToken(token);
     dispatch(resetCart())
 
@@ -180,7 +180,7 @@ const Cart = () => {
           amount:500,
           
         })
-        // navigate.push("/success", {stripeData:res.data,product:cart,})
+        
         navigate("/success")
       }catch{}
     }

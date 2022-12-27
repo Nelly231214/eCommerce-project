@@ -33,7 +33,7 @@ import styled from "styled-components";
     height: 40px;
     border-radius: 50%;
     color: white;
-    background-color: #${(props) => props.color};
+    background-color: #FED049;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,22 +87,22 @@ import styled from "styled-components";
           There are so many different kinds of toys for kids that it can be easiest to focus on a specific category for the kind of activity you want to encourage. You can also follow cues from your kids to see what kind of category they might be most interested in. 
           </Desc>
           <SocialContainer>
-            <SocialIcon color="3B5999">
+            <SocialIcon >
               <a href="https://github.com/Nelly231214" target="_blank">
               <Github/>
               </a>
             </SocialIcon>
-            <SocialIcon color="E4405F">
+            <SocialIcon >
               <a href="https://www.linkedin.com/feed/" target="_blank">
               <Linkedin />
               </a>
             </SocialIcon>
-            <SocialIcon color="55ACEE">
+            <SocialIcon >
               <a href="https://twitter.com/NellyBagh4" target="_blank">
               <Twitter />
               </a>
             </SocialIcon>
-            <SocialIcon color="E60023">
+            <SocialIcon >
               <a href="https://www.pinterest.com/nellybaghdasaryan231214/" target="_blank">
               <Pinterest />
               </a>

@@ -4,7 +4,7 @@ import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 // import { mobile } from "../responsive";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useEffect,useState } from "react";
 import { publicRequest } from "../requestMethods";
 import { Dash, Plus } from "react-bootstrap-icons";
@@ -127,6 +127,7 @@ const Product = () => {
   const [color,setColor]=useState("");
   const [brand,setBrand]=useState("");
   const dispatch=useDispatch();
+  const navigate=useNavigate()
   useEffect(()=>{
     window.scrollTo(0,0);
   },[])
@@ -150,6 +151,7 @@ const Product = () => {
  const handleClick=()=> {
   dispatch(
   addProduct({...product, quantity,color,brand}))
+  navigate("/cart")
  }
  
   return (
